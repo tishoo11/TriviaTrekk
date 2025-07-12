@@ -85,11 +85,26 @@ namespace TriviaTrekk
 
                 Console.ResetColor();
 
+                // Проверка за победа
+                if (currentPlayer.Position >= 50)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"\n {currentPlayer.Name} печели играта!");
+                    Console.ResetColor();
+                    break;
+                }
+
+                // Играчът продължава хода си
+                continue;
+
             }
 
+           
         }
 
-
-
     }
+
+
+
+    
 }
