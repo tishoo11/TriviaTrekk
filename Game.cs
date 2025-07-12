@@ -72,6 +72,21 @@ namespace TriviaTrekk
 
                 }
 
+                // Показваме текущите позиции
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("\n📍 Позиции:");
+
+                foreach (Player p in players)
+                {
+                    string line = $"{p.Position,2} " + new string('-', p.Position) + $" {p.Name}";
+
+                    Console.WriteLine(line);
+                }
+
+                Console.ResetColor();
+
+            }
+
         }
 
 
