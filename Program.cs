@@ -10,6 +10,7 @@ namespace TriviaTrekk
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
