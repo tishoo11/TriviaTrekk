@@ -98,13 +98,17 @@ namespace TriviaTrekk
                 continue;
 
             }
+           else
+           {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Грешен отговор! Оставате на място.");
+                Console.WriteLine($"Верният отговор беше: {q.Answers[q.CorrectAnswer]}");
+                Console.ResetColor();
+                currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
+           }
 
-           
         }
 
     }
 
-
-
-    
 }
