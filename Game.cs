@@ -47,9 +47,34 @@ namespace TriviaTrekk
                 else if (roll >= 5 || roll <= 6) difficulty = 3;
 
 
-            }
+                // Подбор на въпрос по трудност
+                Questions q = repo.GetRandomQuestionByDifficulty(difficulty);
+                Console.WriteLine($"Въпрос (Трудност: {q.Crux}): {q.Text}");
+
+                for (int i = 0; i < 4; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {q.Answers[i]}");
+                }
+
+                Console.Write("Вашият отговор (1–4): ");
+                int answer;
+                while (!int.TryParse(Console.ReadLine(), out answer) || answer < 1 || answer > 4)
+                {
+                    Console.WriteLine("Невалиден отговор. Опитайте пак (1–4): ");
+                }
+
+                if ((answer - 1) == q.CorrectAnswer)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Верен отговор! Движите се напред.");
+                    Console.ResetColor();
+                    currentPlayer.Position += roll;
+
+                }
 
         }
+
+
 
     }
 }
