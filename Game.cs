@@ -70,42 +70,43 @@ namespace TriviaTrekk
                     Console.ResetColor();
                     currentPlayer.Position += roll;
 
-                }
 
-                // Показваме текущите позиции
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("\n📍 Позиции:");
+                    // Показваме текущите позиции
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("\n📍 Позиции:");
 
-                foreach (Player p in players)
-                {
-                    string line = $"{p.Position,2} " + new string('-', p.Position) + $" {p.Name}";
+                    foreach (Player p in players)
+                    {
+                        string line = $"{p.Position,2} " + new string('-', p.Position) + $" {p.Name}";
 
-                    Console.WriteLine(line);
-                }
+                        Console.WriteLine(line);
+                    }
 
-                Console.ResetColor();
-
-                // Проверка за победа
-                if (currentPlayer.Position >= 50)
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"\n {currentPlayer.Name} печели играта!");
                     Console.ResetColor();
-                    break;
+
+                    // Проверка за победа
+                    if (currentPlayer.Position >= 50)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine($"\n {currentPlayer.Name} печели играта!");
+                        Console.ResetColor();
+                        break;
+                    }
+
+                    // Играчът продължава хода си
+                    continue;
                 }
 
-                // Играчът продължава хода си
-                continue;
-
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Грешен отговор! Оставате на място.");
+                    Console.WriteLine($"Верният отговор беше: {q.Answers[q.CorrectAnswer]}");
+                    Console.ResetColor();
+                    currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
+                }
             }
-           else
-           {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Грешен отговор! Оставате на място.");
-                Console.WriteLine($"Верният отговор беше: {q.Answers[q.CorrectAnswer]}");
-                Console.ResetColor();
-                currentPlayerIndex = (currentPlayerIndex + 1) % players.Length;
-           }
+           
 
         }
 
